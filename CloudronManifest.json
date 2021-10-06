@@ -6,10 +6,7 @@
   "version": "0.0.1",
   "healthCheckPath": "/api/v1/health",
   "httpPort": 8000,
-  "addons": {
-    "localstorage": {},
-    "sendmail": {}
-  },
+  "addons": {},
   "icon": "file://icon.png",
   "manifestVersion": 2,
   "website": "https://faker.rossmac.co.uk",
