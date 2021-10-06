@@ -22,7 +22,7 @@ jobs:
       - run: docker push rossmaclean/faker:${GITHUB_SHA}
 
   deploy_prod:
-    needs: deploy_test
+    needs: build_push_image
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
