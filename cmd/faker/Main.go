@@ -17,7 +17,7 @@ func main() {
 
 	c := cron.New()
 	c.AddFunc("*/1 * * * *", func() {
-		core.GenerateAndSavePeople(1)
+		core.GenerateAndSavePeople(1000)
 	})
 
 	c.Start()
