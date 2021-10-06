@@ -22,4 +22,5 @@ func main() {
 	log.Println("Application Running")
 
 	gocron.Every(1).Second().Do(core.GenerateAndSavePeople(1), 1, "hello")
+	<-gocron.Start()
 }
