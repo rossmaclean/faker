@@ -15,7 +15,7 @@ func main() {
 
 	router.GET("/api/v1/health", healthleft.HealthHandler)
 
-	gocron.Every(1).Second().Do(core.GenerateAndSavePeople(1), 1, "hello")
+	gocron.Every(1).Second().Do(core.GenerateAndSavePeople, 1)
 	<-gocron.Start()
 
 	err := router.Run(":8000")
