@@ -5,8 +5,8 @@ go 1.17
 require (
 	github.com/gin-gonic/gin v1.7.4
 	github.com/gocarina/gocsv v0.0.0-20210516172204-ca9e8a8ddea8
-	github.com/jasonlvhit/gocron v0.0.1
 	github.com/magiconair/properties v1.8.5
+	github.com/robfig/cron v1.2.0
 	go.mongodb.org/mongo-driver v1.7.3
 	syreclabs.com/go/faker v1.2.3
 )

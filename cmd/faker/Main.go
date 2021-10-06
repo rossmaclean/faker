@@ -4,7 +4,7 @@ import (
 	healthleft "faker/internal/health/left"
 	"faker/internal/writer/core"
 	"github.com/gin-gonic/gin"
-	"github.com/jasonlvhit/gocron"
+	"github.com/robfig/cron"
 	"log"
 )
 
@@ -15,12 +15,16 @@ func main() {
 
 	router.GET("/api/v1/health", healthleft.HealthHandler)
 
-	gocron.Every(1).Second().Do(core.GenerateAndSavePeople, 1)
-	<-gocron.Start()
+	c := cron.New()
+	c.AddFunc("*/1 * * * *", func() {
+		core.GenerateAndSavePeople(1)
+	})
+
+	c.Start()
 
 	err := router.Run(":8000")
 	if err != nil {
 		log.Fatal("Unable to start web server", err)
 	}
-	log.Println("Application Running")
+
 }

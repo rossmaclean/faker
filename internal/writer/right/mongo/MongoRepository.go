@@ -4,7 +4,6 @@ import (
 	"context"
 	"faker/internal"
 	"faker/internal/writer/core/model"
-	"fmt"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"log"
@@ -29,10 +28,7 @@ func (r *MongoPeopleRepository) InitDb() {
 	log.Printf("Connecting to MongoDB %s", collectionName)
 	p := internal.GetMongoProperties()
 
-	uri := fmt.Sprintf("mongodb://%s:%s@%s:27017/?authSource=%s",
-		p.User, p.Password, p.Host, p.Database)
-
-	clientOptions := options.Client().ApplyURI(uri)
+	clientOptions := options.Client().ApplyURI(p.ConnectionString)
 	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
 	clnt, err := mongo.Connect(ctx, clientOptions)
 

@@ -1,6 +1,7 @@
 package internal
 
 import (
+	"fmt"
 	"github.com/magiconair/properties"
 	"log"
 	"os"
@@ -32,18 +33,24 @@ func IsLocal() bool {
 }
 
 type MongoProperties struct {
-	User     string
-	Password string
-	Host     string
-	Database string
+	ConnectionString string
+	Database         string
 }
 
 func GetMongoProperties() MongoProperties {
+	mongoHost := p.MustGetString("mongo.host")
+	mongoDatabase := p.MustGetString("mongo.database")
+	mongoUser := p.MustGetString("mongo.user")
 	mongoPassword := p.GetString("mongo.password", os.Getenv("MONGO_PASSWORD"))
+	connectionString := ""
+	if IsLocal() {
+		connectionString = fmt.Sprintf("mongodb://%s:27017/?authSource=%s", mongoHost, mongoDatabase)
+	} else {
+		connectionString = fmt.Sprintf("mongodb://%s:%s@%s:27017/?authSource=%s",
+			mongoUser, mongoPassword, mongoHost, mongoDatabase)
+	}
 	return MongoProperties{
-		User:     p.MustGetString("mongo.user"),
-		Password: mongoPassword,
-		Host:     p.MustGetString("mongo.host"),
-		Database: p.MustGetString("mongo.database"),
+		ConnectionString: connectionString,
+		Database:         mongoDatabase,
 	}
 }
