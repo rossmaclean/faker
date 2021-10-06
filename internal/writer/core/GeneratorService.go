@@ -14,7 +14,6 @@ import (
 
 func GenerateAndSavePeople(amount int) error {
 	for i := 0; i < amount; i++ {
-		log.Printf("Generating and saving person %d", i)
 		person := getFakePerson()
 		writerright.GetPeopleRepository().SavePerson(person)
 	}
