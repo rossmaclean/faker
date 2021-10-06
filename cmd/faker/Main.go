@@ -15,12 +15,12 @@ func main() {
 
 	router.GET("/api/v1/health", healthleft.HealthHandler)
 
+	gocron.Every(1).Second().Do(core.GenerateAndSavePeople(1), 1, "hello")
+	<-gocron.Start()
+
 	err := router.Run(":8000")
 	if err != nil {
 		log.Fatal("Unable to start web server", err)
 	}
 	log.Println("Application Running")
-
-	gocron.Every(1).Second().Do(core.GenerateAndSavePeople(1), 1, "hello")
-	<-gocron.Start()
 }

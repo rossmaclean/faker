@@ -32,18 +32,18 @@ func IsLocal() bool {
 }
 
 type MongoProperties struct {
-	User                string
-	Password            string
-	Host                string
-	Database            string
+	User     string
+	Password string
+	Host     string
+	Database string
 }
 
 func GetMongoProperties() MongoProperties {
 	mongoPassword := p.GetString("mongo.password", os.Getenv("MONGO_PASSWORD"))
 	return MongoProperties{
-		User:                p.MustGetString("mongo.user"),
-		Password:            mongoPassword,
-		Host:                p.MustGetString("mongo.host"),
-		Database:            p.MustGetString("mongo.database"),
+		User:     p.MustGetString("mongo.user"),
+		Password: mongoPassword,
+		Host:     p.MustGetString("mongo.host"),
+		Database: p.MustGetString("mongo.database"),
 	}
 }
