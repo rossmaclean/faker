@@ -23,4 +23,4 @@ jobs:
         with:
           node-version: 15.x
       - run: npm i -g cloudron
-      - run: cloudron update --server my.rossmac.co.uk --token ${{ secrets.CLOUDRON_TOKEN }} --app faker.rossmac.co.uk --image rossmaclean/faker:${{ github.event.inputs.version }}
+      - run: cloudron update --no-update --server my.rossmac.co.uk --token ${{ secrets.CLOUDRON_TOKEN }} --app faker.rossmac.co.uk --image rossmaclean/faker:${{ github.event.inputs.version }}

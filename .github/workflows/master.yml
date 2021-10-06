@@ -34,4 +34,4 @@ jobs:
 #     Below is commented out as there is no way to log in with a token/server which must be done before this step
 #      - name: Set Environment Variables
 #        run: cloudron env set --app cryptchat.rossmac.co.uk ENV=prod MONGO_PASSWORD=${{ secrets.MONGO_PROD_PASSWORD }}
-      - run: cloudron update --server my.rossmac.co.uk --token ${{ secrets.CLOUDRON_TOKEN }} --app faker.rossmac.co.uk --image rossmaclean/faker:${GITHUB_SHA}
+      - run: cloudron update --no-update --server my.rossmac.co.uk --token ${{ secrets.CLOUDRON_TOKEN }} --app faker.rossmac.co.uk --image rossmaclean/faker:${GITHUB_SHA}
