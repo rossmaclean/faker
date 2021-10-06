@@ -8,6 +8,10 @@ import (
 	"log"
 )
 
+var cronRunning = false
+var skippedCount = 0
+var totalSkipped = 0
+
 func main() {
 	log.Println("Starting Application")
 	gin.SetMode(gin.ReleaseMode)
@@ -17,7 +21,17 @@ func main() {
 
 	c := cron.New()
 	c.AddFunc("*/1 * * * *", func() {
-		core.GenerateAndSavePeople(50)
+		if cronRunning {
+			log.Printf("Cron already running, skipping, already skipped: %d, total skipped: %d",
+				skippedCount, totalSkipped)
+			skippedCount = skippedCount + 1
+			totalSkipped = totalSkipped + 1
+		} else {
+			skippedCount = 0
+			cronRunning = true
+			core.GenerateAndSavePeople(50)
+			cronRunning = false
+		}
 	})
 
 	c.Start()
