@@ -1,0 +1,9 @@
+/.idea/.gitignore
+/.idea/cryptchat.iml
+/.idea/modules.xml
+/.idea/vcs.xml
+/.idea/*
+
+web/node_modules/**
+vendor/**
+bin/**

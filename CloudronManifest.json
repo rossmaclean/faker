@@ -1,0 +1,18 @@
+{
+  "id": "co.uk.rossmac",
+  "title": "Faker",
+  "author": "Ross MacLean <ross@rossmac.co.uk>",
+  "description": "Database tester",
+  "version": "0.0.1",
+  "healthCheckPath": "/api/v1/health",
+  "httpPort": 8000,
+  "addons": {
+    "localstorage": {},
+    "sendmail": {}
+  },
+  "icon": "file://icon.png",
+  "manifestVersion": 2,
+  "website": "https://faker.rossmac.co.uk",
+  "contactEmail": "support@rossmac.co.uk",
+  "tags": [ "database" ]
+}
