@@ -46,12 +46,9 @@ func (r *MongoPeopleRepository) InitDb() {
 }
 
 func (r *MongoPeopleRepository) SavePerson(person writercoremodel.Person) error {
-	startTime := time.Now()
 	_, err := collection.InsertOne(context.TODO(), person)
 	if err != nil {
 		return err
 	}
-	runTime := time.Since(startTime)
-	log.Printf("Mongo took %s", runTime)
 	return nil
 }

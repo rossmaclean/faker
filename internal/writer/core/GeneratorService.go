@@ -13,11 +13,13 @@ import (
 )
 
 func GenerateAndSavePeople(amount int) error {
+	startTime := time.Now()
 	for i := 0; i < amount; i++ {
 		person := getFakePerson()
 		writerright.GetPeopleRepository().SavePerson(person)
 	}
-	log.Printf("Generated and saved %d people", amount)
+	runTime := time.Since(startTime)
+	log.Printf("Generated and saved %d people in %s", amount, runTime)
 	return nil
 }
 
