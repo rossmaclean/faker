@@ -35,8 +35,8 @@ func main() {
 
 func runAsLoop(c chan error) {
 	fakerService := writer.GetFakerService()
-	for i := 0; i < 50000000; i++ {
-		err := fakerService.GenerateAndSavePeople(100)
+	for i := 0; i < 1000000; i++ {
+		err := fakerService.GenerateAndSavePeople(1000)
 		if err != nil {
 			c <- err
 		}
