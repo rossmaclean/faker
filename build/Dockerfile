@@ -14,5 +14,4 @@ COPY --from=go-build /app/faker /app/pkg/api/faker
 ADD ./configs/*.properties /app/pkg/configs/
 COPY start.sh /app/pkg/
 
-CMD [ "sleep 200" ]
-#CMD [ "/app/pkg/start.sh" ]
+CMD [ "/app/pkg/start.sh" ]
