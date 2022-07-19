@@ -8,12 +8,12 @@ ADD ./go.sum .
 RUN #go test -v ./...
 RUN go build -o faker /app/cmd/faker
 
-FROM golang:alpine
+FROM cloudron/base:3.2.0@sha256:ba1d566164a67c266782545ea9809dc611c4152e27686fd14060332dd88263ea
+
 WORKDIR /app/code
+
 COPY --from=go-build /app/faker ./api/
 ADD ./configs/*.properties ./configs/
+COPY start.sh /app/pkg/
 
-RUN adduser -S -D -H -h /app appuser
-USER appuser
-EXPOSE 8000
-CMD ["./api/faker"]
+CMD [ "/app/pkg/start.sh" ]
