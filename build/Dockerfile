@@ -1,7 +1,6 @@
 FROM golang:alpine as go-build
 WORKDIR /app
 ADD ./cmd/faker ./cmd/faker
-ADD ./configs ./configs
 ADD ./internal ./internal
 ADD ./go.mod .
 ADD ./go.sum .
