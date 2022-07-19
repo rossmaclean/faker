@@ -3,30 +3,29 @@ package internal
 import (
 	"fmt"
 	"github.com/magiconair/properties"
-	"log"
 	"os"
 )
 
 var p *properties.Properties
 
-func init() {
-	filename := "./configs/"
-	log.Println("Initialising config")
-	switch GetEnv() {
-	case "prod":
-		filename += "prod.properties"
-		break
-	default:
-		err := os.Setenv("ENV", "local")
-		if err != nil {
-			log.Fatal(err)
-		}
-		filename += "local.properties"
-		break
-	}
-	p = properties.MustLoadFile(filename, properties.UTF8)
-	log.Printf("Running with %s profile", GetEnv())
-}
+//func init() {
+//	filename := "./configs/"
+//	log.Println("Initialising config")
+//	switch GetEnv() {
+//	case "prod":
+//		filename += "prod.properties"
+//		break
+//	default:
+//		err := os.Setenv("ENV", "local")
+//		if err != nil {
+//			log.Fatal(err)
+//		}
+//		filename += "local.properties"
+//		break
+//	}
+//	p = properties.MustLoadFile(filename, properties.UTF8)
+//	log.Printf("Running with %s profile", GetEnv())
+//}
 
 func GetEnv() string {
 	return os.Getenv("ENV")
