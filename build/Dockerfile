@@ -16,4 +16,6 @@ COPY --from=go-build /app/faker /app/code/api/faker
 ADD ./configs/*.properties /app/code/configs/
 COPY start.sh /app/code/
 
+RUN chown -R cloudron:cloudron /app/code
+
 CMD [ "/app/code/start.sh" ]
