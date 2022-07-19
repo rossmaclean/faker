@@ -10,10 +10,9 @@ RUN go build -o faker /app/cmd/faker
 
 FROM cloudron/base:3.2.0@sha256:ba1d566164a67c266782545ea9809dc611c4152e27686fd14060332dd88263ea
 
-WORKDIR /app/pkg
-
 COPY --from=go-build /app/faker /app/pkg/api/faker
 ADD ./configs/*.properties /app/pkg/configs/
 COPY start.sh /app/pkg/
 
-CMD [ "/app/pkg/start.sh" ]
+CMD [ "sleep 200" ]
+#CMD [ "/app/pkg/start.sh" ]
