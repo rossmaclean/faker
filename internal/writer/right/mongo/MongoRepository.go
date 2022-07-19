@@ -31,7 +31,6 @@ func (r *MongoPeopleRepository) InitDb() {
 	clientOptions := options.Client().ApplyURI(p.ConnectionString)
 	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
 	clnt, err := mongo.Connect(ctx, clientOptions)
-
 	if err != nil {
 		log.Println(err)
 	}
@@ -47,8 +46,5 @@ func (r *MongoPeopleRepository) InitDb() {
 
 func (r *MongoPeopleRepository) SavePerson(person writercoremodel.Person) error {
 	_, err := collection.InsertOne(context.TODO(), person)
-	if err != nil {
-		return err
-	}
-	return nil
+	return err
 }

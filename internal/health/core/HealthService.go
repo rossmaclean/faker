@@ -9,7 +9,7 @@ import (
 )
 
 func GetHealth() (healthcoremodel.HealthResponse, error) {
-	healthStatuses := []healthcoremodel.HealthStatus{}
+	var healthStatuses []healthcoremodel.HealthStatus
 	healthStatuses = append(healthStatuses, getDatabaseHealth())
 
 	isErr := false
