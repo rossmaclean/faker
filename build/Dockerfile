@@ -16,4 +16,4 @@ COPY --from=go-build /app/faker ./api/
 ADD ./configs/*.properties ./configs/
 COPY start.sh /app/pkg/
 
-CMD [ "/app/pkg/start.sh" ]
+CMD [ "/app/code/api/faker" ]
