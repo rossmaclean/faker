@@ -1,6 +1,7 @@
 package main
 
 import (
+	"faker/internal"
 	healthleft "faker/internal/health/left"
 	writer "faker/internal/writer/core"
 	"github.com/gin-gonic/gin"
@@ -36,11 +37,13 @@ func main() {
 func runAsLoop(c chan error) {
 	fakerService := writer.GetFakerService()
 	for i := 0; i < 1000000; i++ {
-		err := fakerService.GenerateAndSavePeople(1000)
+		err := fakerService.GenerateAndSavePeople(internal.GetFakerProperties().NumToGenerate)
 		if err != nil {
 			c <- err
 		}
-		time.Sleep(time.Millisecond * 200)
+		sleepTime := time.Millisecond.Milliseconds() * int64(internal.GetFakerProperties().SleepMillis)
+
+		time.Sleep(time.Duration(sleepTime))
 	}
 }
 
