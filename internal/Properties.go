@@ -10,8 +10,14 @@ import (
 var p *properties.Properties
 
 func init() {
-	filename := "./configs/"
 	log.Println("Initialising config")
+
+	filename := "./configs/"
+
+	if len(os.Args) == 2 {
+		filename = os.Args[1]
+	}
+
 	switch GetEnv() {
 	case "prod":
 		filename += "prod.properties"
@@ -24,6 +30,7 @@ func init() {
 		filename += "local.properties"
 		break
 	}
+
 	p = properties.MustLoadFile(filename, properties.UTF8)
 	log.Printf("Running with %s profile", GetEnv())
 }
