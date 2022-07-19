@@ -11,12 +11,16 @@ var p *properties.Properties
 
 func init() {
 	filename := "./configs/"
+	log.Println("Initialising config")
 	switch GetEnv() {
 	case "prod":
 		filename += "prod.properties"
 		break
 	default:
-		os.Setenv("ENV", "local")
+		err := os.Setenv("ENV", "local")
+		if err != nil {
+			log.Fatal(err)
+		}
 		filename += "local.properties"
 		break
 	}
