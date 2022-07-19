@@ -3,6 +3,8 @@
 echo "Starting Faker"
 ls -la /app/code/api/
 
+sleep 500
+
 echo "2"
 /app/code/api/faker
 echo "3"
