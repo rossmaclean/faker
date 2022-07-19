@@ -2,9 +2,9 @@ name: Main CI
 
 env:
   DOCKER_USER: rossmaclean
-  PROJECT_NAME: blog
+  PROJECT_NAME: faker
   CLOUDRON_SERVER: my.rossmac.co.uk
-  APP_DOMAIN: blog.rossmac.co.uk
+  APP_DOMAIN: faker.rossmac.co.uk
   DOCKERFILE_PATH: build/Dockerfile
 
 on:
